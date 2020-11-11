@@ -1,0 +1,13 @@
+#attractor-target {
+  height: 20em;
+  overflow: hidden;
+  position: relative;
+
+  > span {
+    background-color: transparentize(#a855f7, 0.5);
+    border-radius: 50%;
+    position: absolute;
+    left: -100%;
+    top: -100%;
+  }
+}
