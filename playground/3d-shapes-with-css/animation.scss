@@ -1,0 +1,180 @@
+$height: 360px;
+$width: 600px;
+$perspective: 1200px;
+
+$cuboid-count: 10;
+$cuboid-middle: ($cuboid-count - 1) / 2;
+$cuboid-height: $height;
+$cuboid-width: $width / $cuboid-count;
+$cuboid-depth: $cuboid-width;
+
+$face-color: #a855f7;
+$border-color: #7e22ce;
+
+// Trigonometry helpers.
+
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  } @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  @if $unit == deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  @for $i from 0 through 10 {
+    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos;
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
+}
+
+// Cuboids.
+
+#cuboids-target {
+  .cuboids {
+    height: $height;
+    width: $width;
+    margin: 1em auto;
+    perspective: $perspective;
+    position: relative;
+  }
+
+  .cuboid {
+    height: $cuboid-height;
+    width: $cuboid-width;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    position: absolute;
+
+    @for $i from 0 to $cuboid-count {
+      &:nth-child(#{$i + 1}) {
+        left: $cuboid-width * $i;
+        z-index: ($cuboid-middle - abs($cuboid-middle - $i) + 1) * 100;
+      }
+    }
+  }
+
+  .face {
+    backface-visibility: hidden;
+    background-color: $face-color;
+    border: 1px solid $border-color;
+    display: block;
+    position: absolute;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      // front & back
+      height: $cuboid-height;
+      width: $cuboid-width;
+    }
+    &:nth-child(3),
+    &:nth-child(4) {
+      // left & right
+      height: $cuboid-height;
+      width: $cuboid-depth;
+      left: ($cuboid-width - $cuboid-depth) / 2;
+    }
+    &:nth-child(5),
+    &:nth-child(6) {
+      // top & bottom
+      height: $cuboid-depth;
+      width: $cuboid-width;
+      top: ($cuboid-height - $cuboid-depth) / 2;
+    }
+
+    &:nth-child(1) {
+      // front
+      transform: translateZ(#{$cuboid-depth / 2});
+    }
+    &:nth-child(2) {
+      // back
+      transform: rotateX(-180deg) translateZ(#{$cuboid-depth / 2});
+    }
+    &:nth-child(3) {
+      // left
+      transform: rotateY(-90deg) translateZ(#{$cuboid-width / 2});
+    }
+    &:nth-child(4) {
+      // right
+      transform: rotateY(90deg) translateZ(#{$cuboid-width / 2});
+    }
+    &:nth-child(5) {
+      // top
+      transform: rotateX(90deg) translateZ(#{$cuboid-height / 2});
+    }
+    &:nth-child(6) {
+      // bottom
+      transform: rotateX(-90deg) translateZ(#{$cuboid-height / 2});
+    }
+  }
+}
+
+// Animation.
+
+@function angle-for-cuboid($i) {
+  $degrees: 360deg * $i / ($cuboid-count - 1);
+  @return (sin($degrees) * -45) + 90;
+}
+
+@for $i from 0 to $cuboid-count {
+  .cuboid:nth-child(#{$i + 1}) {
+    animation: flip#{$i + 1} 10s #{$i / 5}s ease-in-out infinite;
+    transform: rotateX(#{angle-for-cuboid($i)}deg);
+  }
+}
+
+@for $i from 0 to $cuboid-count {
+  @keyframes flip#{$i + 1} {
+    10%,
+    50% {
+      transform: rotateX(#{angle-for-cuboid($i) + 180}deg);
+    }
+    60% {
+      transform: rotateX(#{angle-for-cuboid($i)}deg);
+    }
+  }
+}
