@@ -1,0 +1,12 @@
+#attractor-target {
+  overflow: hidden;
+  position: relative;
+  height: 20em;
+}
+#attractor-target > span {
+  background-color: rgba(72, 121, 156, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  left: -100%;
+  top: -100%;
+}
