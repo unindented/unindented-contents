@@ -1,0 +1,44 @@
+@function lorenz($color, $iterations, $sx, $sy, $sz) {
+  $output: "";
+  $end: $iterations;
+
+  $a: 10;
+  $b: 28;
+  $c: 8 / 3;
+  $t: 0.01;
+
+  $x: $sx;
+  $y: $sy;
+  $z: $sz;
+
+  @for $i from 0 through $end {
+    $xt: $x + $t * $a * ($y - $x);
+    $yt: $y + $t * ($x * ($b - $z) - $y);
+    $zt: $z + $t * ($x * $y - $c * $z);
+
+    $cval: rgba($color, ($i / $end));
+    $xval: $xt * -25;
+    $yval: $yt * -10;
+    $sval: $zt * 0.05;
+
+    $output: $output + "#{$cval} #{$xval}px #{$yval}px #{$sval}px";
+    @if $i < $end {
+      $output: $output + ", ";
+    }
+
+    $x: $xt;
+    $y: $yt;
+    $z: $zt;
+  }
+
+  @return unquote($output);
+}
+
+#attractor-target {
+  text-align: center;
+  text-shadow: lorenz(#a855f7, 5000, 0, 8, 10);
+
+  > span {
+    line-height: 20em;
+  }
+}
