@@ -1,0 +1,21 @@
+digraph {
+  rankdir="LR";
+
+  graph [bgcolor="transparent", color="magenta", fontcolor="magenta", fontname="Sans-Serif"];
+  node [bgcolor="transparent", color="magenta", fontcolor="magenta", fontname="Sans-Serif", margin="0,0.15", shape="box", width="2.25"];
+  edge [bgcolor="transparent", color="magenta", fontcolor="magenta", fontname="Sans-Serif"];
+
+  white_noise -> white_gain -> analyzer;
+  pink_noise -> pink_gain -> analyzer;
+  red_noise -> red_gain -> analyzer;
+  analyzer -> destination;
+
+  white_noise [label=<White noise<br/><br/><i>ScriptProcessorNode</i>>];
+  pink_noise [label=<Pink noise<br/><br/><i>ScriptProcessorNode</i>>];
+  red_noise [label=<Red noise<br/><br/><i>ScriptProcessorNode</i>>];
+  white_gain [label=<White gain<br/><br/><i>GainNode</i>>];
+  pink_gain [label=<Pink gain<br/><br/><i>GainNode</i>>];
+  red_gain [label=<Red gain<br/><br/><i>GainNode</i>>];
+  analyzer [label=<Analyzer<br/><br/><i>AnalyserNode</i>>];
+  destination [label=<Destination<br/><br/><i>AudioDestinationNode</i>>];
+}
