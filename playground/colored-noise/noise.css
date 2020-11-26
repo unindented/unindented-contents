@@ -1,0 +1,99 @@
+/**
+ * These range styles are stolen from Ana Tudor's collection:
+ * https://codepen.io/collection/DgYaMj
+ */
+
+:root {
+  --track-height: 0.5em;
+  --track-pad: 0.125em;
+
+  --thumb-height: calc(3 * var(--track-height));
+  --thumb-width: 2.5em;
+  --thumb-radius: 0.5em;
+}
+
+.visualization {
+  border: 0;
+  border-radius: 0;
+  grid-column: full;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.ranges {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: var(--space-m) 0;
+  z-index: 1;
+}
+
+.range-label {
+  color: var(--color-heading);
+  font-family: var(--font-family-alt);
+  margin-block-end: 0;
+  margin-inline-end: var(--space-m);
+  text-align: end;
+  text-transform: uppercase;
+  width: auto;
+}
+
+.range-input {
+  cursor: pointer;
+  margin-block-end: 0;
+  padding: var(--space-m) 0;
+}
+
+.range-input,
+.range-input::-webkit-slider-runnable-track,
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+.range-input::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--color-neutral-6), var(--color-neutral-6)) content-box,
+    linear-gradient(var(--color-neutral-2), var(--color-neutral-4)) border-box;
+  border-radius: var(--track-height) / calc(var(--track-height) / 2);
+  box-shadow: inset 0 1px 1px var(--color-neutral-1), 0 1px 1px var(--color-neutral-6);
+  box-sizing: border-box;
+  height: var(--track-height);
+  padding: var(--track-pad);
+}
+.range-input::-moz-range-track {
+  background: linear-gradient(var(--color-neutral-6), var(--color-neutral-6)) content-box,
+    linear-gradient(var(--color-neutral-2), var(--color-neutral-4)) border-box;
+  border-radius: var(--track-height) / calc(var(--track-height) / 2);
+  box-shadow: inset 0 1px 1px var(--color-neutral-1), 0 1px 1px var(--color-neutral-6);
+  box-sizing: border-box;
+  height: var(--track-height);
+  padding: var(--track-pad);
+}
+.range-input::-webkit-slider-thumb {
+  background: linear-gradient(90deg, var(--color-neutral-1), var(--color-neutral-5)) content-box,
+    linear-gradient(90deg, var(--color-neutral-5), var(--color-neutral-1)) border-box;
+  border: solid 0 transparent;
+  border-radius: var(--thumb-radius);
+  border-width: 1px 0.3125em;
+  box-shadow: inset 0 1px 2px var(--color-neutral-1), 0 1px 2px var(--color-neutral-6);
+  box-sizing: border-box;
+  cursor: ew-resize;
+  height: var(--thumb-height);
+  width: var(--thumb-width);
+  margin-block-start: calc((var(--track-height) - var(--thumb-height)) / 2 - var(--track-pad));
+}
+.range-input::-moz-range-thumb {
+  background: linear-gradient(90deg, var(--color-neutral-1), var(--color-neutral-5)) content-box,
+    linear-gradient(90deg, var(--color-neutral-5), var(--color-neutral-1)) border-box;
+  border: solid 0 transparent;
+  border-radius: var(--thumb-radius);
+  border-width: 1px 0.3125em;
+  box-shadow: inset 0 1px 2px var(--color-neutral-1), 0 1px 2px var(--color-neutral-6);
+  box-sizing: border-box;
+  cursor: ew-resize;
+  height: var(--thumb-height);
+  width: var(--thumb-width);
+}
