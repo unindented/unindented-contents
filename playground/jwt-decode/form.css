@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-wrapper,
+.output-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: var(--space-m) 0 0;
+}
+
+.input-wrapper {
+  margin-inline-end: var(--space-s);
+}
+
+.output-wrapper {
+  margin-inline-start: var(--space-s);
+}
+
+.input,
+.output {
+  font-family: var(--font-family-code);
+}
+
+.input {
+  flex: 1;
+  resize: none;
+}
+
+.output {
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
