@@ -1,12 +1,12 @@
 +++
 title = "About"
-description = "I’m Daniel Perez Alvarez, a software engineer currently working at Microsoft. I’m originally from Madrid, I lived in London for a while, and now I’m based in Seattle."
+description = "I’m Daniel Perez Alvarez, a software engineer currently working at Twitter. I’m originally from Madrid, I lived in London for a while, and now I’m based in Seattle."
 layout = "single"
 +++
 
 ## About me
 
-I'm **Daniel Perez Alvarez**, a software engineer currently working at [Microsoft](https://www.microsoft.com/). I'm originally from [Madrid](https://en.wikipedia.org/wiki/Madrid), I lived in [London](https://en.wikipedia.org/wiki/London) for a while, and now I'm based in [Seattle](https://en.wikipedia.org/wiki/Seattle).
+I'm **Daniel Perez Alvarez**, a software engineer currently working at [Twitter](https://twitter.com/). I'm originally from [Madrid](https://en.wikipedia.org/wiki/Madrid), I lived in [London](https://en.wikipedia.org/wiki/London) for a while, and now I'm based in [Seattle](https://en.wikipedia.org/wiki/Seattle).
 
 _**Fun fact**: In Spanish cultures, people tend to have two surnames. The first is the paternal surname --- the father's first surname --- and the second is the maternal surname --- the mother's first surname. So **Perez** is not my middle name, it's my first surname!_
 
