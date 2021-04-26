@@ -14,6 +14,6 @@ Anyways, if you want to get in touch, feel free to send me a {{< tweet >}} or an
 
 ## About the site
 
-This version of the site is built with [Hugo](https://gohugo.io/). Type is set in Roboto on Android, San Francisco on iOS/macOS, and Segoe on Windows. There's also a [style guide]({{< ref "about/style-guide" >}}) if you're into that.
+This version of the site is built with [Hugo](https://gohugo.io/). Headings use a typeface called [xkcd Script](https://github.com/ipython/xkcd-font). Bodies use sans-serif system fonts (Roboto on Android, San Francisco on iOS/macOS, Segoe on Windows, etc.). Math expressions are rendered using [KaTeX](https://katex.org/). There's also a [style guide]({{< ref "about/style-guide" >}}) if you're into that.
 
 You can check out the codey bits at [unindented/unindented-hugo](https://github.com/unindented/unindented-hugo), and the contents in Markdown form at [unindented/unindented-contents](https://github.com/unindented/unindented-contents).
