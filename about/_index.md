@@ -9,7 +9,7 @@ menu = "main"
 
 I'm **Daniel Perez Alvarez**, a software engineer focused on front-end web development.
 
-- Currently unemployed. Previously at [Twitter](https://twitter.com/), [Microsoft](https://www.microsoft.com/).
+- Currently at [Snowflake](https://www.snowflake.com/). Previously at [Twitter](https://twitter.com/), [Microsoft](https://www.microsoft.com/).
 - Based in Seattle. Lived in London for a while. Originally from Madrid.
 - Here's a [list of sites I follow]({{< ref "follows" >}}).
 - Here's a [list of stuff I use]({{< ref "uses" >}}).
