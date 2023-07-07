@@ -2,6 +2,7 @@
 title = "About"
 description = "I'm Daniel Perez Alvarez, a software engineer focused on front-end web development."
 layout = "single"
+menu = "main"
 +++
 
 ## About me
@@ -12,6 +13,7 @@ I'm **Daniel Perez Alvarez**, a software engineer focused on front-end web devel
 - Based in Seattle. Lived in London for a while. Originally from Madrid.
 - Here's a [list of sites I follow]({{< ref "follows" >}}).
 - Here's a [list of stuff I use]({{< ref "uses" >}}).
+- Here's [music]({{< ref "likes/music" >}}) and [movies]({{< ref "likes/movies" >}}) I like.
 
 Want to get in touch? Feel free to {{< email >}}email me{{</ email >}}.
 

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+DIR=$1
+
+regex='^\.\/(.+)\/(.+) \(([0-9]+)\)\/folder.jpg$'
+json='[]'
+
+for src in ./*/*/folder.jpg; do
+  artist=$(sed -E "s/$regex/\1/" <<< "$src")
+  album=$(sed -E "s/$regex/\2/" <<< "$src")
+  year=$(sed -E "s/$regex/\3/" <<< "$src")
+  cover=$(echo "$artist $album $year" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^0-9a-z]+/_/gi')
+
+  cp "$src" "$DIR/$cover.jpg"
+
+  json=$(jq --arg artist "$artist" --arg album "$album" --arg year "$year" --arg cover "$cover.jpg" '. += [{ "artist": $artist, "album": $album, "year": $year, "cover": $cover }]' <<< "$json")
+done
+
+jq 'sort_by(.artist, .year)' <<< "$json" > "$DIR/music.json"
